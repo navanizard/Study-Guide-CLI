@@ -2,11 +2,8 @@
 Author: Nava Karine Nizard
 Course: CSCI-135
 Instructor: Professor Tong Yi
-Date: April 10, 2025.
-Assignment: Project 2C
-
-This program reorders the questions by bringing the questions
-on the types the user got wrong 3 times to the fore-front.
+Semester: Spring 2025
+Brief: Definition / Implementation of functions
 */
 
 #include "quiz.h" //declarations of functions
@@ -69,7 +66,7 @@ void read_file(string fileName, Question ques[], int capacity, int& size){
 
         } while(getline(fin, line) && !line.starts_with("question: "));
 
-        //if there's no sufficient capacity, quit the program.
+        //if there's insufficient capacity, quit the program.
         if (size >= capacity){
             return; 
         }
@@ -104,7 +101,7 @@ string trim(string str)
     return str.substr(startIdx, endIdx - startIdx + 1);
 }
 
-//Counts the occurences of a specified char in a string
+//Counts the occurrences of a specified char in a string
 int count_occurrences(string str, char ch) 
 {
     int len = str.length();
@@ -177,7 +174,7 @@ void insert_order_unique(string type[], int type_capacity, int& type_count, Ques
     }
 }
 
-//Returns the user chosen type after printing out a list of types to select from
+//Returns the user's chosen type after printing out a list of types to select from
 string choose_type(string* types, int type_count)
 {
     cout << "0. ALL TYPES" << endl;
@@ -235,19 +232,19 @@ void feedback(int num_correct, int num_questions)
     }
 }
 
-//Simulate a question by question test based on user-given type
+//Simulate a question-by-question quiz based on the user-given type
 void answer_by_type(Question ques[], int size, string chosen_type)
 {
     cout << endl; //new line after choosing a type
     int correctQuestionCount = 0;
     int selectedQuestions = 0;
-    for (int i = 0; i < size; i++){
-        if (ques[i].type.find(chosen_type) != -1){
+    for (int i = 0; i < size; i++){ //loop through each question
+        if (ques[i].type.find(chosen_type) != -1){ //if the question includes the user type, display it
             selectedQuestions++;
             int tries = 0;
             bool correct = false;
             string userAnswer;
-            cout << "Question " << i + 1 << "." << endl;
+            cout << "Question " << i + 1 << "." << endl; //starts at index 0
             cout << ques[i].text << endl;
             do{
                 cout << "Enter your answer: ";
@@ -261,7 +258,7 @@ void answer_by_type(Question ques[], int size, string chosen_type)
                 cout << boolalpha << correct << endl;
             } while(tries < 3 && !correct);
 
-            if(tries == 3 && !correct && ques[i].explanation != ""){
+            if(tries == 3 && !correct && ques[i].explanation != ""){ //after 3 incorrect
                 cout << "Answer: " << ques[i].answer << endl << "Explanation: " << 
                 ques[i].explanation << endl;
             }
@@ -297,14 +294,14 @@ void reorder(Question ques[], int size, int idx) //idx is the idx of the type th
 
     string type_to_focus = ques[idx].type;
     for (int i = idx + 1; i < size; i++){
-        if (type_related(type_to_focus, ques[i].type)){ //if the type we're checking is already in the right place
-            continue; //move to next iteration. dont swap anything
+        if (type_related(type_to_focus, ques[i].type)){ //if the type we're checking is already in the right place,
+            continue; //move to next iteration. Don't swap anything
         }
         int curr_type = i + 1; //the one to switch with (the first related one)
         while(curr_type < size && !type_related(type_to_focus, ques[curr_type].type)){ //as long as still within bounds and unrelated
             curr_type++;
         }
-        //if you leave the while loop, either because out of bounds or because you found a type that's related
+        //if you leave the while loop, either because it's out of bounds or because you found a related type
         //so check if still within bounds
         if (curr_type < size){
             swap(ques[curr_type], ques[i]); //swap the related one with the one unrelated
@@ -335,5 +332,6 @@ bool type_related(string type_to_focus, string curr_type)
     delete[] type2;
     return false;
 
+    //WRONG:
     // return (curr_type.find(type_to_focus) != -1);
 }
