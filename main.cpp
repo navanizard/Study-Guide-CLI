@@ -2,11 +2,9 @@
 Author: Nava Karine Nizard
 Course: CSCI-135
 Instructor: Professor Tong Yi
-Date: April 10, 2025.
-Assignment: Project 2C
-
-This program reorders the questions by bringing the questions
-on the types the user got wrong 3 times to the fore-front.
+Semester: Spring 2025
+Brief: This program dynamically generates and tracks questions in a quiz 
+based on user performance, prioritizing incorrect answers for review.
 */
 
 #include <iostream>
@@ -35,6 +33,9 @@ int main()
     insert_order_unique(types, TYPE_CAPACITY, typeCount, ques, questionCount);
     string userType = choose_type(types, typeCount);
     answer_by_type(ques, questionCount, userType);
+
+    //include randomize
+    //include reorder
     return 0;
 }
 
