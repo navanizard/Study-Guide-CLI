@@ -18,7 +18,8 @@ This approach mimics spaced repetition and helps improve retention through targe
 
 The code is modular and includes:
 - `main.cpp`: The driver file that runs the program loop.  
-- `quiz.cpp`: Functions for reading questions, tracking attempts, and ordering the quiz strategically.  
+- `quiz.cpp`: Functions for reading questions, tracking attempts, and ordering the quiz strategically.
+- Text files: These files contain the quiz questions and answers.
 
 ## 🚀 Getting Started
 
@@ -45,7 +46,7 @@ To compile and run the project:
    ./study-guide
    ```
 
-You can modify the question file or create your own using a simple text format. Each line represents a single question-answer pair.
+You can modify the question file or create your own using a simple text format. 
 
 ## 📚 Educational Purpose
 
@@ -60,5 +61,6 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 ## 🙏 Credits
 
-- Special thanks to the CS teaching staff at Hunter College for their guidance throughout the semester.  
 - Huge appreciation to **Professor Tong Yi**, whose question files and feedback laid the groundwork for this tool.
+- Special thanks to the CS teaching staff at Hunter College for their guidance throughout the semester.  
+
