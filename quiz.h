@@ -2,11 +2,8 @@
 Author: Nava Karine Nizard
 Course: CSCI-135
 Instructor: Professor Tong Yi
-Date: April 10, 2025.
-Assignment: Project 2C
-
-This program reorders the questions by bringing the questions
-on the types the user got wrong 3 times to the fore-front.
+Semester: Spring 2025
+Brief: Declaration of functions
 */
 
 #ifndef QUIZ_H
