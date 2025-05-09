@@ -1,6 +1,6 @@
 # Study Guide CLI
 
-This is a command-line study guide application written in C++ that dynamically generates and adjusts quizzes based on user performance. It was developed as a semester-long project for CSCI 135: Software Analysis & Design I at Hunter College, where we were encouraged to iteratively build upon our code each week — refining functionality, improving logic, and eventually creating a complete study tool.
+This is a command-line study guide application written in C++ that dynamically generates and adjusts quizzes based on user performance. It was developed as a project for CSCI 135: Software Analysis & Design I at Hunter College, where we were encouraged to iteratively build upon our code each week — refining functionality, improving logic, and eventually creating a complete study tool.
 
 What started as a small assignment grew into something genuinely useful. I actually used this project to prepare for my midterm and found it incredibly helpful for reinforcing concepts we’d learned in class.
 
