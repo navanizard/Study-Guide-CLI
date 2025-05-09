@@ -21,6 +21,21 @@ The code is modular and includes:
 - `quiz.cpp`: Functions for reading questions, tracking attempts, and ordering the quiz strategically.
 - Text files: These files contain the quiz questions and answers.
 
+## 📸 Screenshots
+
+**Welcome Screen:**
+
+![Welcome Screen](screenshots/selectType.png)
+
+**Sample Question:**
+
+![Sample Question Answered Incorrectly](screenshots/threeWrong.png)
+
+**Final Results:**
+
+![Results](screenshots/results.png)
+
+
 ## 🚀 Getting Started
 
 To compile and run the project:

@@ -30,12 +30,11 @@ int main()
     string types[TYPE_CAPACITY];
     int typeCount = 0;
 
+    randomize(ques, questionCount);
     insert_order_unique(types, TYPE_CAPACITY, typeCount, ques, questionCount);
     string userType = choose_type(types, typeCount);
     answer_by_type(ques, questionCount, userType);
 
-    //include randomize
-    //include reorder
     return 0;
 }
 
