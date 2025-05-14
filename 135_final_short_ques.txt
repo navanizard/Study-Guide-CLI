@@ -1,0 +1,312 @@
+question: Given string groceries[] = {"milk", "apple pie", "onion"}, what is groceries[1].substr(3, 5)?
+answer: "le pi"
+explanation: (1) groceries[1] is the second element of array of strings, which is "apple pie".
+(2) Expression groceries[1].substr(3, 5) is the substring from the fourth letter (indexed at 3, the first parameter of substr method of string class) of this string spanning with 5 letters (which is the second parameter of substr method of string class in C++). groceries[1].substr(3, 5) is a substring "le pi".
+type: array; substring; string
+version: f24, v1
+label: 1.1 
+
+question: Given a declaration std::vector<int> v(3, 1);, what is the value of v.size()? 
+answer: 3
+explanation: (1) std::vector<int> v(3, 1); instantiate (create) a vector object v with 3 elements and each element is 1.
+(2) v.size() returns the number of elements of v, which is 3.
+type: vector 
+version: f24, v1
+label: 1.2 
+
+question: What possible numbers does code 1 + rand() % 7 generate?
+answer: a random int in [1, 7]
+explanation: (1) rand() generates a random integer in [0, RAND_MAX].
+(2) Operator % (remainder or modular) has a higher precedence than operator +. As a result, rand() % 7 runs and generates a random integer in [0, 6]. Note that there are 7 integers in [0, 6], from 0 to 6.
+(3) 1 + rand() % 7 generates a random integer in [1, 7]. That is, a random integer from 1 to 7, a total of seven choices.
+type: random; remainder; arithmetic 
+version: f24, v1
+label: 1.3 
+
+question: Given string numStr = std::to_string(-21) + "0";, where to_string converts an integer to a string. What is the value for numStr?
+answer: "-210"
+explanation: (1) std::to_string(-21) converts integer -21 to string "-21".
+(2) Operator + in std::to_string(-21) + "0" is a concatenation operator between two strings, appending the second string to the end of the first string. So the result is "-210".
+type: string
+version: f24, v1
+label: 1.4 
+
+question: What is the value of (4 + 7 % 3) / 2 in C++?
+answer: 2
+explanation: (1) remainder operator % has higher precedence than addition operator +. So % runs first in 4 + 7 % 3. 
+(1a) Note that 7 % 3 is 1, which is like to divide 7 pens among 3 persons, each person gets 2 pens and there is one (1) pen remained.
+(1b) Add the result of 7 % 3 with 4, the sum is 5.
+(2) When 5 is divided by 2, the quotient is 2. It is like to divide 5 pens among 2 persons, each person gets two (2) pens.
+type: remainder; arithmetic; integer division 
+version: f24, v1
+label: 1.5 
+
+question: Write header of a function called min, given an array of characters (type char) with size many elements, return the smallest ASCII code of all the elements in the array. 
+answer: int min(char arr[], int size);
+explanation: (1) another solution is 
+int min(char* arr, int size); 
+whether * is close to char as in char* arr or close to arr as char *arr does not matter.
+(2) The array name also implies the address of the first element of the array, where the latter is a pointer to the type of array. So in a function header, either char arr[] or char* arr is fine. 
+
+(3) Here are the following ways we declare and initialize an array.
+
+Option 1: char arr[] = {'a', 'b', 'c'}; //correct
+
+Option 2: char* arr = {'a', 'b', 'c'}; //wrong
+
+Option 3: char* arr = new char[3];
+arr[0] = 'a';
+arr[1] = 'b';
+arr[2] = 'c';
+... //use the array
+delete[] arr; //when arr is no longer needed
+arr = nullptr; 
+
+(4) VERY important, in a function taking an array as parameter in C++, we MUST provide the size of array as a parameter besides the array name. 
+Reason: an array is not a class in C++ and has no dot operator associated with it, so arr.size() is WRONG.  
+(5) In this example, we need to return the smallest ASCII codes of all elements in the array. An ASCII code is an int, so the return type of the function is int. 
+(6) Warning: the following are wrong solutions to the above problem.
+int min(char[] arr, int size); 
+    //[] needs be after array name in C++
+
+int min(char* arr[], int size); //use * and [] at the same time,
+    //this means arr is an array of char* type,
+    //we need an array of char type in our problem.
+type: function; array
+version: f24, v1
+label: 1.6 
+
+
+question: Declare class Coord as follows.
+
+class Coord {
+public:
+    double x;
+    double y;
+};
+
+Declare a Coord object point and initialize its x as 2 and y as 3.
+
+answer: Coord point = {2, 3};
+explanation: (1) When initializing an object with public data members, we can use curly braces to enclose the values, listed in the order of declaration, separated by comma. 
+
+Note that the order of listed numbers is important. For example,
+Coord point = {3, 2}; 
+initializes x of point to be 3 and y of point to be 2.
+Reason: in declaration of Coord type, data member x is declared before y.
+
+Also, the following solutions are correct.
+
+Coord point{2, 3}; 
+
+or
+
+Coord point;
+point.x = 2;
+point.y = 3;
+
+type: class; object
+version: f24, v1
+label: 1.7
+
+question: Given 
+int grades[] = {73, 99, 100, 62};
+What is the value of *grades + 2?
+answer: 75
+explanation: (1) dereference operator * has higher precedence than addition operator +.
+(2) grades is the name of an array, it is also the address of the first element of the array. Dereference operator * applies on a pointer variable is to locate the element residing in the value of that pointer variable, which is the address of array in this example. So *grades is grades[0], the first element in array grades. That is, *grades is 73.
+(3) Expression *grades + 2 adds 2 to *grades, the result is 75.
+type: class; object
+version: f24, v1
+label: 1.8
+
+question: Given the following code segment.
+
+void foo(string *ps, string *pt);
+
+int main() {
+    string s = "hello";
+    string t = "hi";
+
+    //TODO: write a statement to call foo using appropriate attributes of s and t.
+
+    return 0;
+}
+
+answer: foo(&s, &t);
+explanation: (1) the header of function foo is
+void foo(string *ps, string *pt);
+
+(2) The return type is void, the first parameter is a pointer to a string, so is the second parameter. The value of pointer to a string is the address of a string variable.
+(3) In main function, s and t are two strings. The address of s can be found by applying address operator & to s as in &s. Similarly we use &t to find out the address of string t.
+(4) The parameters of foo are pointers to strings, whose values are address of string variables, so we pass the addresses of string variables to function foo when calling it.  
+(5) Side note: we name a function to be foo, it is like to call a child as a kid, it is a general name without specific meaning. Sometimes we intentionally use function name foo to avoid hints of function meaning. But when you name a function, you should not use foo.
+type: function; pointer; address
+version: f24, v1
+label: 1.9
+
+
+question: Suppose we have main function defined as follows. And calling foo(m, n), the values of m and n are swapped. That is, m becomes 2 and n becomes 1.
+
+int main() {
+   int m = 1;
+   int n = 2;
+   foo(m, n);
+   return 0;
+
+What is the header of function foo? Suppose its return type is void.
+
+answer: void foo(int& m, int& n);
+explanation: (1) We need to change the contents of two variables in a function and carry the changes back to the function's caller.
+(2) However, the return type is void.
+(3) We need to pass the parameters by references. So the original copy of the actual parameters, in this example, m and n in main function, are passed to function foo.
+(4) Since function foo takes the original copy of parameters, the changes on those parameters will be carried back to function main, the caller of function foo.
+(5) Warning: symbol & after int cannot be omitted and it means pass by reference when followed by a type in a function header.
+type: function; pass by reference
+version: f24, v1
+label: 1.10
+
+
+question: What is output for the following code?
+
+    int a = 2;
+    int* p = &a;
+    a++;
+    cout << *p << endl;
+
+answer: 3
+explanation: (1) after statement int* p = &a;, which saves a's address to pointer p, then *p represents the guy who lives in the address of variable a.
+(2) Note that no two variables can reside in the same address, so *p is an alias of variable a. That is, *p and a are the same.
+(3) The next statement a++; is the same as a = a + 1;, which increases a's value by 1. Variable a changes from the initital value 2 to 3.
+(4) Since *p is an alias of variable a. The value of *p is 3.
+type: pointer; address 
+version: f24, v1
+label: 1.11
+
+question: What is the output for the following code?
+
+    vector<int> nums = {1, 2, 0};
+
+    int count = 0;
+    for (int i = 0; i < nums.size(); i++)
+        if (nums[i] % 2 == 0)
+           count++;
+
+    cout << count << endl;
+
+answer: 2
+explanation: (1) The above code counts elements satisfying requirements.
+(2) Condition (nums[i] % 2 == 0) means nums[i] divided by 2, the remainder is 0. That is, nums[i] is even.
+(3) Loop header for (int i = 0; i < nums.size(); i++) to go through every index i of vector nums.
+(4) Combine (1) - (3) to count the number of elements in vector nums that are even, so the result is 2, since there are two integers 2 and 0 in nums are even integers.
+type: vector; remainder; counting 
+version: f24, v1
+label: 1.12
+
+
+question: What the output of the following code? 
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 2; col++) {
+            if (row >= 1)
+               cout << "#";
+            else cout << "-";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
+answer:
+--
+##
+##
+
+explanation: Here is how we work on nested loops.
+Take the loop variable of the outer loop, work on the inner loop.
+Update the loop variable in the outer loop, work on the inner loop, until the loop variable no longer satisfy conditions in the outer loop.
+(1) When row is 0, row is < 3, enter the codes inside of outer loop.
+
+        for (int col = 0; col < 2; col++) {
+            if (row >= 1)
+               cout << "#";
+            else cout << "-";
+        }
+        cout << endl;
+
+Since row (= 0) is not >= 1, so work on the else part,
+cout << "-";
+That is, the code can be simplified as follows.
+print "-" for three times as in the following loop.
+Afterwards, print a new line character.
+
+        for (int col = 0; col < 2; col++) {
+            cout << "-";
+        }
+        cout << endl;
+
+The output is 
+---
+(the next output starts from here).
+
+(2) When row is 1, row is < 3, enter the codes inside of outer loop.
+
+        for (int col = 0; col < 2; col++) {
+            if (row >= 1)
+               cout << "#";
+            else cout << "-";
+        }
+        cout << endl;
+
+Since row (= 1) is >= 1, so work on the if part,
+cout << "#";
+That is, the code can be simplified as follows.
+print "#" for three times as in the following loop.
+Afterwards, print a new line character.
+
+        for (int col = 0; col < 2; col++) {
+            cout << "#";
+        }
+        cout << endl;
+
+Combine with the previous output, the output is 
+---
+###
+(the next output starts from here).
+
+(3) When row is 2, row is < 3, enter the codes inside of outer loop.
+
+        for (int col = 0; col < 2; col++) {
+            if (row >= 1)
+               cout << "#";
+            else cout << "-";
+        }
+        cout << endl;
+
+Since row (= 2) is >= 1, so work on the if part,
+cout << "#";
+That is, the code can be simplified as follows.
+print "#" for three times as in the following loop.
+Afterwards, print a new line character.
+
+        for (int col = 0; col < 2; col++) {
+            cout << "#";
+        }
+        cout << endl;
+
+Combine with the previous output, the output is 
+---
+###
+###
+(the next output starts from here).
+(4) Now row is 3, the condition in the outer loop (row < 3) is not satisfied, finish the outer loop.
+type: nested loops; remainder; shapes 
+version: f24, v1
+label: 1.13
+
+

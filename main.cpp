@@ -23,8 +23,9 @@ int main()
     int questionCount = 0;
     Question ques[CAPACITY];
     read_file("cs135_midterm_f24_v1.txt", ques, CAPACITY, questionCount);
-    read_file("cs135_midterm_f24_v2.txt", ques, CAPACITY, questionCount);
-    read_file("cs135_midterm_s24_v1.txt", ques, CAPACITY, questionCount);
+    // read_file("cs135_midterm_f24_v2.txt", ques, CAPACITY, questionCount);
+    // read_file("cs135_midterm_s24_v1.txt", ques, CAPACITY, questionCount);
+    // read_file("135_final_short_ques.txt", ques, CAPACITY, questionCount);
 
     const int TYPE_CAPACITY = 30;
     string types[TYPE_CAPACITY];
